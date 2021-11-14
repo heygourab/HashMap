@@ -24,6 +24,10 @@ class Hashmap:
         key = self.get_hash(key)
         return self.arr[key]
 
+    def __delitem__(self, key):
+        key = self.get_hash(key)
+        self.arr[key] = None
+
 
 if __name__ == '__main__':
     h = Hashmap()  #object of the HashMap class
@@ -35,3 +39,6 @@ if __name__ == '__main__':
     print(h['gourab'])  #get hash value
     print(h['heygourab'])  #get hash value
     print(h['rupam'])  #get hash value
+
+    del h['heygourab']  #delete hash value
+    print(h['heygourab'])  #now hash value is None
