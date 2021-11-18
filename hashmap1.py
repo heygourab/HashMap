@@ -22,6 +22,8 @@ class Hashmap:
 
     def __getitem__(self, key):
         key = self.get_hash(key)
+        if self.arr[key] is None:
+            return 'Wrong key!'
         return self.arr[key]
 
     def __delitem__(self, key):
