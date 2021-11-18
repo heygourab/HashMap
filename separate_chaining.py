@@ -19,15 +19,7 @@ class HashTable:
 
     def __setitem__(self, key, value):
         key = self.get_hash(key)
-        
-        
-        for idx, v in enumerate(self.array):
-            if len(v) == 2 and v[0] == key
-        self.array[key].append(key,value)
-        
-        
-        
-        
+        self.array[key] = value
 
     def __delitem__(self, key):
         key = self.get_hash(key)
