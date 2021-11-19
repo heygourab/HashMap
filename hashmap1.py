@@ -21,13 +21,12 @@ class Hashmap:
         self.arr[self.get_hash(key)] = value
 
     def __getitem__(self, key):
-        if self.arr[self.hash(key)] is None:
+        if self.arr[self.get_hash(key)] is None:
             return 'Wrong key!'
-        return self.arr[key]
+        return self.arr[self.get_hash(key)]
 
     def __delitem__(self, key):
-        key = self.get_hash(key)
-        self.arr[key] = None
+        self.arr[self.get_hash(key)] = None
 
 
 if __name__ == '__main__':
