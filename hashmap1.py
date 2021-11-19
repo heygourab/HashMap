@@ -8,7 +8,8 @@
 
 class Hashmap:
     def __init__(self, ):
-        self.arr = [None] * 100  #arr = [none, none , none ,....100n]
+        self.arr = [None
+                    for i in range(101)]  #arr = [none, none , none ,....100n]
 
     def get_hash(self, key):
         store = 0
@@ -17,12 +18,10 @@ class Hashmap:
         return store % 100
 
     def __setitem__(self, key, value):
-        key = self.get_hash(key)
-        self.arr[key] = value
+        self.arr[self.get_hash(key)] = value
 
     def __getitem__(self, key):
-        key = self.get_hash(key)
-        if self.arr[key] is None:
+        if self.arr[self.hash(key)] is None:
             return 'Wrong key!'
         return self.arr[key]
 
