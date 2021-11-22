@@ -9,28 +9,36 @@
 
 
 class HashTable:
-    def __init__(self):
-        self.array = [[]] * 100
+    def __init__(self, ):
+        self.array = [[] for i in range(101)]
 
-    def get_hash(self, key):
-        store = 0  # store
-        for k in key:
-            store += ord(k)
+    def hash(self, key):
+        store = 0
+        for i in key:
+            store += ord(i)
+        return store % 100
 
     def __setitem__(self, key, value):
-        key = self.get_hash(key)
-        self.array[key] = value
-
-    def __delitem__(self, key):
-        key = self.get_hash(key)
-        self.array[key] = None
+        h = self.hash(key)
+        found = False
+        for idx, element in enumerate(self.array[h]):
+            if len(element) == 2 and element[0] == key:
+                self.array[h][idx] = [key, value]
+                found = True
+                break
+        if found == False:
+            self.array[h] = [[key, value]]
 
     def __getitem__(self, key):
-        key = self.get_hash(key)
-        return self.array[key]
+        h = self.hash(key)
+        if len(self.array[h]) == 1 and self.array[h][0][0] == key:
+            return self.array[h][0][1]
+        for element in self.array[h]:
+            if element[0] == key:
+                return element[1]
 
 
 if __name__ == '__main__':
-    h = HashTable()
-    h['gourab'] = 69
-    print(h.array)
+    hm = HashTable()
+    hm['gourab'] = 69
+    print(hm['gourab'])
