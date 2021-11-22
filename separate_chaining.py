@@ -10,7 +10,7 @@
 
 class HashTable:
     def __init__(self, ):
-        self.array = [[] for i in range(101)]
+        self.array = [[] for i in range(100)]
 
     def hash(self, key):
         store = 0
@@ -31,14 +31,23 @@ class HashTable:
 
     def __getitem__(self, key):
         h = self.hash(key)
-        if len(self.array[h]) == 1 and self.array[h][0][0] == key:
-            return self.array[h][0][1]
         for element in self.array[h]:
             if element[0] == key:
                 return element[1]
+        return 'Wrong Key!'
+
+    def __delitem__(self, key):
+        h = self.hash(key)
+        for idx, element in enumerate(self.array[h]):
+            if len(element) == 2 and element[0] == key:
+                del self.array[h][idx]
 
 
 if __name__ == '__main__':
     hm = HashTable()
     hm['gourab'] = 69
+    print(hm.array)
+    print(hm['gourab'])
+    del hm['gourab']
+    print(hm.array)
     print(hm['gourab'])
