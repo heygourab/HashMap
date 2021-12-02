@@ -29,7 +29,7 @@ class HashTable:
     def __getitem__(self, key):
         h = self.hash(key)
         for element in self.array[h]:
-            if element[0] == key:
+            if key in element:
                 return element[1]
         raise KeyError(key)
 
