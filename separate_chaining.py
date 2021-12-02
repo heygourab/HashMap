@@ -25,7 +25,6 @@ class HashTable:
                 self.array[h][idx] = (key, value)
                 return
         self.array[h].append((key, value))
-            
 
     def __getitem__(self, key):
         h = self.hash(key)
@@ -37,7 +36,7 @@ class HashTable:
     def __delitem__(self, key):
         h = self.hash(key)
         for idx, element in enumerate(self.array[h]):
-            if len(element) == 2 and element[0] == key:
+            if key in element:
                 del self.array[h][idx]
 
 
