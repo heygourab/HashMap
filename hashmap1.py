@@ -22,7 +22,7 @@ class Hashmap:
 
     def __getitem__(self, key):
         if self.arr[self.get_hash(key)] is None:
-            return 'Wrong key!'
+            raise KeyError(key)
         return self.arr[self.get_hash(key)]
 
     def __delitem__(self, key):
@@ -30,15 +30,5 @@ class Hashmap:
 
 
 if __name__ == '__main__':
-    h = Hashmap()  #object of the HashMap class
+    pass
 
-    h['gourab'] = 69  #set hash value
-    h['heygourab'] = 108  #set hash value
-    h['rupam'] = 143  #set hash value
-
-    print(h['gourab'])  #get hash value
-    print(h['heygourab'])  #get hash value
-    print(h['rupam'])  #get hash value
-
-    del h['heygourab']  #delete hash value
-    print(h['heygourab'])  #now hash value is None
