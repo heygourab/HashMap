@@ -20,16 +20,12 @@ class HashTable:
 
     def __setitem__(self, key, value):
         h = self.hash(key)
-        found = False
-        # update the value thats exists
         for idx, element in enumerate(self.array[h]):
-            if len(element) == 2 and element[0] == key:
-                self.array[h][idx] = [key, value]
-                found = True
-                break
-        if found == False:
-            # add new value to the hash array
-            self.array[h].append([key, value])
+            if key in element:
+                self.array[h][idx] = (key, value)
+                return
+        self.array[h].append((key, value))
+            
 
     def __getitem__(self, key):
         h = self.hash(key)
