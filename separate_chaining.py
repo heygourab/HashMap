@@ -36,7 +36,7 @@ class HashTable:
         for element in self.array[h]:
             if element[0] == key:
                 return element[1]
-        return 'Wrong Key!'
+        raise KeyError(key)
 
     def __delitem__(self, key):
         h = self.hash(key)
@@ -46,11 +46,4 @@ class HashTable:
 
 
 if __name__ == '__main__':
-    hm = HashTable()
-    hm['gourab'] = 69
-    hm['return'] = 108
-    hm['hash'] = 10
-    hm['print'] = 19
-    hm['prokash'] = 70
-    print(hm['gourab'])
-    print(hm.array)
+    pass
